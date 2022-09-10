@@ -88,15 +88,15 @@ function nextLine() {
             line_number++
         }
         if (playMusic && line_number == stopMusic) {
-            let countdown = 9,
+            console.log("s")
+            let countdown = 49,
                 reduceSound = setInterval(() => {
-                    bgm.volume = countdown / 10
-                    if (countdown == 0) {
+                    bgm.volume = countdown / 50
+                    if (countdown == 3) {
                         clearInterval(reduceSound)
-                        bgm.pause()
                     }
                     countdown--
-                }, 90)
+                }, 20)
         }
         lines.setAttribute(
             "style",
