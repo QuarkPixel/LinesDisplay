@@ -1,11 +1,3 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap"); */
-
-// :root {
-//     font-size: 15px;
-// }
-
-
-//import font
 @font-face {
     font-family: 'SourceHan';
     src: url(Font.otf);
@@ -13,12 +5,6 @@
 
 :root {
     --curve: cubic-bezier(.15, 0, .25, 1);
-    // --colorBG: 29, 29, 31;
-    // --colorI: 22, 33, 62;
-    // --colorII: 250, 47, 181;
-    // --colorIII: 83, 52, 131;
-    // --colorVI: 233, 69, 96;
-    // --colorV: 15, 52, 96;
 }
 
 ::-webkit-scrollbar {
@@ -30,12 +16,10 @@
     margin: 0;
     padding: 0;
     font-family: SourceHan;
-    // font-family: ser;
 }
 
 body {
     background-color: var(--colorBG);
-    // cursor: none;
 
     >div {
         position: absolute;
@@ -45,9 +29,6 @@ body {
 }
 
 .bg {
-    /* font-family: "Quicksand", sans-serif; */
-    // margin: 0;
-    // min-height: 100vh;
     height: 100vh;
     width: 100vw;
     background-color: rgb(var(--colorBG));
@@ -76,31 +57,13 @@ body {
     &::after {
         content: "";
         display: block;
-        // position: fixed;
         position: absolute;
         width: 100%;
         height: 100%;
         top: 0;
         left: 0;
-        // backdrop-filter: blur(10px);
-        // -webkit-backdrop-filter: blur(10px);
     }
 }
-
-/* span {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    min-height: 100vh;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    font-size: 5rem;
-    color: transparent;
-    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.6),
-        0px 4px 4px rgba(0, 0, 0, 0.05);
-    letter-spacing: 0.2rem;
-} */
 
 @keyframes movement {
 
@@ -165,8 +128,6 @@ body {
     .titleHidden {
         opacity: 0;
         top: 40% !important;
-        // filter: blur(var(--blurValue));
-        // -webkit-b
         -webkit-filter: blur(var(--blurValue));
         -moz-filter: blur(var(--blurValue));
         -ms-filter: blur(var(--blurValue));
@@ -197,14 +158,12 @@ body {
 
         .focus {
             color: #fff;
-            // transform: scale(1.8);
             font-size: 64px;
             text-shadow: 0 0 20px rgba(0, 0, 0, .1);
             -webkit-filter: blur(0);
             -moz-filter: blur(0);
             -ms-filter: blur(0);
             filter: blur(0);
-            // filter: blur(0) !important;
         }
     }
 

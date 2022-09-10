@@ -38,5 +38,9 @@
     "style": {
         "l21": "font-size: 27pt;line-height: 1.5em"
     },
-    "blur": "0px"
+    "blur": "0px",
+    "music": {
+        "enable": true,
+        "stop": 21
+    }
 }

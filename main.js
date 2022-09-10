@@ -1,11 +1,3 @@
-// function mousedown(event) {
-//     var e = window.event;
-//     var obj = e.srcElement;
-//     obj.style.color = 'blue';
-// }
-
-// function closure(fn) {return function() {fn.apply(this, arguments);}
-
 var titleFocus = true,
     line_number = 0,
     parameters,
@@ -13,7 +5,8 @@ var titleFocus = true,
     emptyLines = [],
     maxLine,
     halfHeight = window.innerHeight / 2,
-    isFullScreen = false
+    isFullScreen = false,
+    playMusic
 
 const title = document.querySelector("#title"),
     lines = document.querySelector("#lines"),
@@ -21,17 +14,13 @@ const title = document.querySelector("#title"),
     root = document.documentElement
 
 window.onload = function () {
-    let url =
-        "Lines.json" /*json文件url，本地的就写本地的位置，如果是服务器的就写服务器的路径*/
+    let url = "Configure.json"
     let request = new XMLHttpRequest()
-    request.open("get", url) /*设置请求方法与路径*/
-    request.send(null) /*不发送数据到服务器*/
+    request.open("get", url)
+    request.send(null)
     request.onload = function () {
         if (request.status == 200)
             var parameters = JSON.parse(request.responseText)
-        for (var i = 0; i < parameters.length; i++) {
-            console.log(parameters[i].name)
-        }
 
         //! color
         root.style.setProperty("--colorBG", parameters.colors[0])
@@ -62,7 +51,6 @@ window.onload = function () {
         for (var i = 0; i < parameters.lines.length; i++) {
             linesHTML += "<p>" + parameters.lines[i] + "</p>"
             if (!parameters.lines[i]) {
-                // console.log(i)
                 emptyLines.push(i)
             }
         }
@@ -74,6 +62,13 @@ window.onload = function () {
                 parameters.style[key]
             )
         })
+
+        //! music
+
+        if (parameters.music.enable) {
+            playMusic = true
+            stopMusic = parameters.music.stop
+        }
     }
 }
 
@@ -81,7 +76,9 @@ function nextLine() {
     if (titleFocus) {
         title.classList.add("titleHidden")
         lines.classList.remove("linesHidden")
-        bgm.play()
+        if (playMusic) {
+            bgm.play()
+        }
         line_p[0].classList.add("focus")
         titleFocus = false
     } else if (line_number < maxLine) {
@@ -89,6 +86,17 @@ function nextLine() {
         line_p[line_number - 1].classList.remove("focus")
         if (emptyLines.includes(line_number)) {
             line_number++
+        }
+        if (playMusic && line_number == stopMusic) {
+            let countdown = 9,
+                reduceSound = setInterval(() => {
+                    bgm.volume = countdown / 10
+                    if (countdown == 0) {
+                        clearInterval(reduceSound)
+                        bgm.pause()
+                    }
+                    countdown--
+                }, 90)
         }
         lines.setAttribute(
             "style",
@@ -126,14 +134,6 @@ document.addEventListener("keyup", (e) => {
         nextLine()
     }
 })
-
-// document.addEventListener(
-//     "mousewheel",
-//     function (event) {
-//         console.log(event.wheelDelta > 0)
-//     },
-//     false
-// )
 
 function whichButton(event) {
     var btnNum = event.button
