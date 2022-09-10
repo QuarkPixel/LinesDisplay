@@ -38,7 +38,7 @@ window.onload = function () {
             title.innerHTML =
                 "<div>" +
                 parameters.info.title +
-                "</div><p>" +
+                "</div><p>——&ensp;" +
                 parameters.info.maker +
                 "</p>"
         } else {
