@@ -157,7 +157,6 @@ document.oncontextmenu = function () {
     return false
 }
 
-//// 判断各种浏览器，找到正确的方法
 function launchFullScreen() {
     if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen()
