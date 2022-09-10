@@ -13,11 +13,12 @@
 
 :root {
     --curve: cubic-bezier(.15, 0, .25, 1);
-    --colorI: 22, 33, 62;
-    --colorII: 250, 47, 181;
-    --colorIII: 83, 52, 131;
-    --colorIV: 233, 69, 96;
-    --colorV: 15, 52, 96;
+    // --colorBG: 29, 29, 31;
+    // --colorI: 22, 33, 62;
+    // --colorII: 250, 47, 181;
+    // --colorIII: 83, 52, 131;
+    // --colorVI: 233, 69, 96;
+    // --colorV: 15, 52, 96;
 }
 
 ::-webkit-scrollbar {
@@ -32,10 +33,15 @@
     // font-family: ser;
 }
 
-body>div {
-    position: absolute;
-    top: 0;
-    left: 0;
+body {
+    background-color: var(--colorBG);
+    // cursor: none;
+
+    >div {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 }
 
 .bg {
@@ -44,25 +50,7 @@ body>div {
     // min-height: 100vh;
     height: 100vh;
     width: 100vw;
-
-    /* background-color: #000; */
-    // background-color: #e493d0;
-    background-color: #1d1d1f;
-    //     background-image: radial-gradient(closest-side,
-    //     rgba(235, 105, 78, 1),
-    //     rgba(235, 105, 78, 0)),
-    // radial-gradient(closest-side,
-    //     rgba(243, 11, 164, 1),
-    //     rgba(243, 11, 164, 0)),
-    // radial-gradient(closest-side,
-    //     rgba(254, 234, 131, 1),
-    //     rgba(254, 234, 131, 0)),
-    // radial-gradient(closest-side,
-    //     rgba(170, 142, 245, 1),
-    //     rgba(170, 142, 245, 0)),
-    // radial-gradient(closest-side,
-    //     rgba(248, 192, 147, 1),
-    //     rgba(248, 192, 147, 0));
+    background-color: rgb(var(--colorBG));
     background-image: radial-gradient(closest-side,
             rgba(var(--colorI), 1),
             rgba(var(--colorI), 0)),
@@ -73,8 +61,8 @@ body>div {
             rgba(var(--colorIII), 1),
             rgba(var(--colorIII), 0)),
         radial-gradient(closest-side,
-            rgba(var(--colorIV), 1),
-            rgba(var(--colorIV), 0)),
+            rgba(var(--colorVI), 1),
+            rgba(var(--colorVI), 0)),
         radial-gradient(closest-side,
             rgba(var(--colorV), 1),
             rgba(var(--colorV), 0));
@@ -151,15 +139,15 @@ body>div {
     height: 100%;
     overflow: hidden;
     pointer-events: none;
+    white-space: nowrap;
 
     #title {
-        font-weight: bold;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: #fff;
-        transition: .5s ease-in;
+        transition: opacity .5s ease-in, top .5s ease-in;
 
         div {
             font-size: 85pt;
@@ -170,13 +158,19 @@ body>div {
         p {
             text-align: end;
             font-size: 20pt;
-            color: rgba(255, 255, 255, .6)
+            color: rgba(255, 255, 255, .7)
         }
     }
 
     .titleHidden {
         opacity: 0;
         top: 40% !important;
+        // filter: blur(var(--blurValue));
+        // -webkit-b
+        -webkit-filter: blur(var(--blurValue));
+        -moz-filter: blur(var(--blurValue));
+        -ms-filter: blur(var(--blurValue));
+        filter: blur(var(--blurValue));
     }
 
     #lines {
@@ -184,28 +178,33 @@ body>div {
         padding: 40px 0;
         top: 50%;
         transform: translateY(-82px);
-        // height: calc(50vw + 82px);
         width: 100vw;
-        // overflow: scroll;
         transition: top 1s var(--curve);
 
         >p {
             transition: all 1s var(--curve);
             display: block;
-            font-weight: bold;
-            color: rgba(255, 255, 255, .8);
+            color: rgba(255, 255, 255, .7);
             font-size: 40px;
             line-height: 84px;
             height: 84px;
             text-align: center;
+            -webkit-filter: blur(var(--blurValue));
+            -moz-filter: blur(var(--blurValue));
+            -ms-filter: blur(var(--blurValue));
+            filter: blur(var(--blurValue));
         }
 
         .focus {
             color: #fff;
-            // font-size: 64px;
-            transform: scale(1.8);
+            // transform: scale(1.8);
+            font-size: 64px;
             text-shadow: 0 0 20px rgba(0, 0, 0, .1);
-
+            -webkit-filter: blur(0);
+            -moz-filter: blur(0);
+            -ms-filter: blur(0);
+            filter: blur(0);
+            // filter: blur(0) !important;
         }
     }
 

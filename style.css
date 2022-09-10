@@ -5,11 +5,6 @@
 }
 :root {
   --curve: cubic-bezier(0.15, 0, 0.25, 1);
-  --colorI: 22, 33, 62;
-  --colorII: 250, 47, 181;
-  --colorIII: 83, 52, 131;
-  --colorIV: 233, 69, 96;
-  --colorV: 15, 52, 96;
 }
 ::-webkit-scrollbar {
   width: 0;
@@ -20,6 +15,9 @@
   padding: 0;
   font-family: SourceHan;
 }
+body {
+  background-color: var(--colorBG);
+}
 body > div {
   position: absolute;
   top: 0;
@@ -29,9 +27,8 @@ body > div {
   /* font-family: "Quicksand", sans-serif; */
   height: 100vh;
   width: 100vw;
-  /* background-color: #000; */
-  background-color: #1d1d1f;
-  background-image: radial-gradient(closest-side, rgba(var(--colorI), 1), rgba(var(--colorI), 0)), radial-gradient(closest-side, rgba(var(--colorII), 1), rgba(var(--colorII), 0)), radial-gradient(closest-side, rgba(var(--colorIII), 1), rgba(var(--colorIII), 0)), radial-gradient(closest-side, rgba(var(--colorIV), 1), rgba(var(--colorIV), 0)), radial-gradient(closest-side, rgba(var(--colorV), 1), rgba(var(--colorV), 0));
+  background-color: rgb(var(--colorBG));
+  background-image: radial-gradient(closest-side, rgba(var(--colorI), 1), rgba(var(--colorI), 0)), radial-gradient(closest-side, rgba(var(--colorII), 1), rgba(var(--colorII), 0)), radial-gradient(closest-side, rgba(var(--colorIII), 1), rgba(var(--colorIII), 0)), radial-gradient(closest-side, rgba(var(--colorVI), 1), rgba(var(--colorVI), 0)), radial-gradient(closest-side, rgba(var(--colorV), 1), rgba(var(--colorV), 0));
   background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax,
         110vmax 110vmax, 90vmax 90vmax;
   background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax, -30vmax -10vmax, 50vmax 50vmax;
@@ -89,15 +86,15 @@ body > div {
   height: 100%;
   overflow: hidden;
   pointer-events: none;
+  white-space: nowrap;
 }
 .content #title {
-  font-weight: bold;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  transition: 0.5s ease-in;
+  transition: opacity 0.5s ease-in, top 0.5s ease-in;
 }
 .content #title div {
   font-size: 85pt;
@@ -106,11 +103,15 @@ body > div {
 .content #title p {
   text-align: end;
   font-size: 20pt;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
 }
 .content .titleHidden {
   opacity: 0;
   top: 40% !important;
+  -webkit-filter: blur(var(--blurValue));
+  -moz-filter: blur(var(--blurValue));
+  -ms-filter: blur(var(--blurValue));
+  filter: blur(var(--blurValue));
 }
 .content #lines {
   position: absolute;
@@ -123,17 +124,24 @@ body > div {
 .content #lines > p {
   transition: all 1s var(--curve);
   display: block;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 40px;
   line-height: 84px;
   height: 84px;
   text-align: center;
+  -webkit-filter: blur(var(--blurValue));
+  -moz-filter: blur(var(--blurValue));
+  -ms-filter: blur(var(--blurValue));
+  filter: blur(var(--blurValue));
 }
 .content #lines .focus {
   color: #fff;
-  transform: scale(1.8);
+  font-size: 64px;
   text-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  -webkit-filter: blur(0);
+  -moz-filter: blur(0);
+  -ms-filter: blur(0);
+  filter: blur(0);
 }
 .content .linesHidden {
   top: calc(100% + 82px) !important;
